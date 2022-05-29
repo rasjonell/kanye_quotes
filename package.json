@@ -1,7 +1,7 @@
 {
-  "name": "quiz_luiz",
+  "name": "kanye_quotes",
   "version": "0.0.1",
-  "description": "Telegram Quiz Bot",
+  "description": "Telegram bot that sends Kanye West quotes",
   "main": "dist/entry.js",
   "scripts": {
     "prewatch": "npm run build",
