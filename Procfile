@@ -1,1 +1,1 @@
-web: node dist/entry.js
+worker: node dist/entry.js
