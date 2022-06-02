@@ -8,8 +8,8 @@
     "prestart": "npm run build",
     "start": "node -r dotenv/config dist/entry.js",
     "watch": "nodemon -e js,ts,json",
-    "build": "tsc -p tsconfig.json",
-    "postbuild": "tsc-alias -p tsconfig.json"
+    "build": "./node_modules/typescript/bin/tsc -p tsconfig.json",
+    "postbuild": "./node_modules/tsc-alias/dist/bin/index.js -p tsconfig.json"
   },
   "author": "rasjonell",
   "license": "BSD-2-Clause",
