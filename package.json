@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "description": "Telegram bot that sends Kanye West quotes",
   "main": "dist/entry.js",
-  "tsc": "./node_modules/typescript/bin/tsc",
-  "tsc-alias": "./node_modules/tsc-alias/dist/bin/index,js",
   "scripts": {
+    "tsc": "./node_modules/typescript/bin/tsc",
+    "tsc-alias": "./node_modules/tsc-alias/dist/bin/index,js",
     "prewatch": "npm run build",
     "prestart": "npm run build",
     "start": "node -r dotenv/config dist/entry.js",
