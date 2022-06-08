@@ -7,7 +7,12 @@ import { quoteToImage } from "services/canvasMaker";
 const Bot = new Telegraf(process.env.TELEGRAM_TOKEN);
 
 Bot.start(replyQuote);
-Bot.hears(/kanye|քանյե|goat|🐐|\bye|յէ|յե\b/i, replyQuote);
+Bot.hears(/kanye|քանյե/i, replyQuote);
+Bot.hears.('goat', replyQuote)
+Bot.hears.('ye', replyQuote)
+Bot.hears.('յէ', replyQuote)
+Bot.hears.('յե', replyQuote)
+Bot.hears.('🐐', replyQuote)
 
 async function replyQuote(ctx: Context) {
   const quote = await getQuote();
