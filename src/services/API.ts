@@ -1,6 +1,11 @@
+import path from "path";
 import fetch from "node-fetch";
 
+import { Telegram } from "telegraf";
+import { PhotoSize } from "telegraf/typings/core/types/typegram";
+
 const KANYE_URL = "https://api.kanye.rest";
+const OCR_URL = "https://api.ocr.space/parse/imageurl";
 const COLOR_URL = "https://www.colr.org/json/schemes/random/1";
 
 export async function getQuote() {
@@ -29,4 +34,23 @@ export async function getColorScheme(): Promise<
   } catch (error) {
     return ["ffef62", "ab003c"];
   }
+}
+
+export async function imageIncludesText(
+  text: string,
+  photos: PhotoSize[],
+  TelegramClient: Telegram
+): Promise<boolean> {
+  const API_KEY = process.env.OCR_TOKEN;
+
+  const photoMeta = photos[photos.length - 1];
+  const photoData = await TelegramClient.getFileLink(photoMeta.file_id);
+  const fileExtension = path.extname(photoData.pathname);
+
+  const URL = `${OCR_URL}?apikey=${API_KEY}&filetype=${fileExtension}&url=${photoData.href}`;
+  const OCR = await fetch(URL);
+  const data = await OCR.json();
+
+  console.log(data.ParsedResults);
+  return data.ParsedResults[0].ParsedText.toLowerCase().includes(text);
 }

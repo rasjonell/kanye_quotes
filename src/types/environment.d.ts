@@ -2,6 +2,7 @@ declare namespace NodeJS {
   interface ProcessEnv {
     NODE_ENV: "dev" | "test" | "prod";
     TELEGRAM_TOKEN: string;
+    OCR_TOKEN: string;
   }
 }
 
